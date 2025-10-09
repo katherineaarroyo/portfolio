@@ -1,0 +1,392 @@
+:root {
+  font-family: Inter, sans-serif;
+  --brown: #36291E;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("/links/bg.jpg") no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vw;
+  margin-bottom: 5vw;
+  gap: 5vw;
+}
+
+/* header */
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  margin-top: 1vw;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+header img.kaLogo {
+  height: 150px;
+  width: 150px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+nav img {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+nav :link {
+  color: white;
+  text-decoration: none;
+}
+nav :visited {
+  color: white;
+  text-decoration: none;
+}
+nav .hvr-underline-from-left {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+nav .hvr-underline-from-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: white;
+  height: 1px;
+  transition-property: right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+nav .hvr-underline-from-left:hover:before,
+nav .hvr-underline-from-left:focus:before,
+nav .hvr-underline-from-left:active:before {
+  right: 0;
+}
+
+/* intro */
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.intro h1 {
+  margin: 0;
+  font-size: 3vw;
+  font-weight: 500;
+}
+.intro h2 {
+  margin: 0;
+  font-size: 1.5vw;
+  font-weight: 400;
+}
+.intro a {
+  display: relative;
+  display: inline-block;
+  margin: 15px;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 300;
+  cursor: pointer;
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.06) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(255, 255, 255, 0.1);
+}
+.intro a :link {
+  color: white;
+  text-decoration: none;
+}
+.intro a :visited {
+  color: white;
+  text-decoration: none;
+}
+.intro a :active {
+  color: white;
+}
+
+/* carousel */
+.portfolioCarousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.portfolioCarousel h3 {
+  font-weight: 400;
+  margin: 0 auto;
+}
+.portfolioCarousel .carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.portfolioCarousel .carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.portfolioCarousel .carouselItem {
+  position: relative;
+  flex: 0 0 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  width: 50vw;
+  height: 50vh;
+  margin: 0 -10vw;
+  transition: transform 0.5s ease, z-index 0.5s ease, opacity 0.5s ease;
+}
+.portfolioCarousel .carouselItem img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: inherit;
+  z-index: 0;
+}
+.portfolioCarousel .carouselItem h6 {
+  display: none;
+  position: absolute;
+  margin: 0;
+  z-index: 2;
+  font-size: 1.5vw;
+  font-weight: 400;
+  color: white;
+}
+.portfolioCarousel .carouselItem:not(.active)::before {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.portfolioCarousel .carouselItem::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 1;
+  transition: background 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+  transition: backdrop-filter 0.3s ease, background 0.3s ease;
+  transition: backdrop-filter 0.3s ease, background 0.3s ease, -webkit-backdrop-filter 0.3s ease;
+}
+.portfolioCarousel .carouselItem.active:hover::before {
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.portfolioCarousel .carouselItem.active:hover h6 {
+  display: block;
+}
+.portfolioCarousel .carouselItem.prev {
+  opacity: 0.5;
+  transform: scale(0.9) translateX(-20px) rotateY(15deg);
+  z-index: 5;
+}
+.portfolioCarousel .carouselItem.next {
+  opacity: 0.5;
+  transform: scale(0.9) translateX(20px) rotateY(-15deg);
+  z-index: 5;
+}
+.portfolioCarousel .carouselItem.active {
+  transform: scale(1);
+  z-index: 10;
+  opacity: 1;
+}
+.portfolioCarousel .carouselIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+.portfolioCarousel .carouselIndicators .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(36, 32, 32, 0.19);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.portfolioCarousel .carouselIndicators .dot.active {
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.06) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(36, 32, 32, 0.53);
+}
+.portfolioCarousel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #F6F6F6;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+  z-index: 2;
+}
+.portfolioCarousel button.prev {
+  left: 15vw;
+}
+.portfolioCarousel button.next {
+  right: 15vw;
+}
+
+/* scrolling text */
+.scrollingContainer {
+  width: 100vw;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.scrollingText {
+  display: inline-flex;
+  will-change: transform;
+}
+
+.scrollingText span {
+  margin-right: 2rem;
+  font-weight: 500;
+}
+
+/* designer dev divs */
+.skills {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw;
+}
+
+.designSkills {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vw;
+  width: 40vw;
+  border-radius: 10px;
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.06) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(255, 255, 255, 0.1);
+}
+.designSkills img {
+  position: absolute;
+  overflow: hidden;
+  transform: translateX(-30%) translateY(-25%);
+  width: 35vw;
+  height: auto;
+  z-index: 0;
+}
+.designSkills p {
+  margin: 0;
+  margin-top: 3vw;
+  padding: 20px;
+  font-size: 1.25vw;
+  width: 80%;
+}
+
+.developSkills {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vw;
+  width: 40vw;
+  border-radius: 10px;
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.06) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(255, 255, 255, 0.1);
+}
+.developSkills img {
+  position: absolute;
+  overflow: hidden;
+  transform: translateX(-25%) translateY(-35%);
+  width: 30vw;
+  height: auto;
+  z-index: 0;
+}
+.developSkills p {
+  margin: 0;
+  margin-top: 3vw;
+  padding: 20px;
+  font-size: 1.25vw;
+  width: 80%;
+}
+
+/* footer */
+footer {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  border-radius: 10px;
+  min-height: 12vw;
+  width: 90%;
+  backdrop-filter: blur(33.6px);
+  -webkit-backdrop-filter: blur(33.6px);
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0.06) 0%, rgba(0, 0, 0, 0.01) 100%), rgba(255, 255, 255, 0.1);
+}
+footer p:first-of-type {
+  font-size: 2vw;
+  font-weight: 600;
+  margin: 0;
+  margin-left: 4vw;
+}
+footer p {
+  font-size: 1vw;
+  margin: 0;
+  padding: 0;
+  margin-left: 4vw;
+}
+footer img {
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  right: 0;
+  width: 55vw;
+  height: auto;
+  z-index: 0;
+}/*# sourceMappingURL=index.css.map */
