@@ -1,47 +1,30 @@
+// ui mode = toggle
+const toggle = document.getElementById('uiMode');
+const body = document.body;
+const uiIcon = toggle.querySelector('img');
+
+// check saved theme
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('darkMode');
+    uiIcon.src = 'links/moon.svg'; // change icon to moon
+}
+
+// toggle dark mode
+toggle.addEventListener('click', () => {
+    body.classList.toggle('darkMode');
+
+    if (body.classList.contains('darkMode')) {
+        localStorage.setItem('theme', 'dark');
+        uiIcon.src = 'links/moon.svg';
+    } else {
+        localStorage.setItem('theme', 'light');
+        uiIcon.src = 'links/sun.svg';
+    }
+});
+
 // carousel
 const track = document.querySelector('.carousel');
 let currentIndex = 1;
-
-// // carousel items
-// const carouselData = [
-//     { 
-//         image: "projects/typefaceCards/P1_Mockup.png",
-//         title: "Typeface Cards", 
-//     },
-//     { 
-//         image: "",
-//         title: "Rembrandt's Conceptual Redesign", 
-//     },
-// ]
-
-// track.innerHTML = "";
-// carouselData.forEach(item => {
-//     const slide = document.createElement('div');
-//     slide.classList.add('carouselItem');
-
-//     // for image
-//     if (item.image) {
-//         const img = document.getElement('img');
-//         img.src = item.image;
-//         img.title = item.title;
-//         img.style.width = "100%";
-//         img.style.height = "100%";
-//         img.style.objectFit = "cover";
-//         slide.appendChild(img);
-//     }
-
-//     const title = document.createElement('div');
-//     title.textContent = item.title;
-//     title.style.position = 'absolute';
-//     title.style.bottom = '10px';
-//     title.style.left = '50%';
-//     title.style.transform = 'translateX(-50%)';
-//     title.style.color = 'white';
-//     title.style.fontWeight = 'bold';
-//     slide.appendChild(title);
-
-//     track.appendChild(slide);
-// });
 
 let slides = Array.from(track.children);
 const prevButton = document.querySelector('.prev');
@@ -164,4 +147,3 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
-

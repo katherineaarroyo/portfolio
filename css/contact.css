@@ -1,0 +1,101 @@
+:root {
+  font-family: Inter, sans-serif;
+  --brown: #36291E;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("/links/bg.jpg") no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15vw;
+  margin-bottom: 5vw;
+  gap: 5vw;
+}
+
+/* header */
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  width: 95vw;
+  margin-top: 1vw;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+header img.kaLogo {
+  height: 150px;
+  width: 150px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 50px;
+}
+nav img {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+nav :link {
+  color: white;
+  text-decoration: none;
+}
+nav :visited {
+  color: white;
+  text-decoration: none;
+}
+nav .hvr-underline-from-left {
+  display: inline-block;
+  vertical-align: middle;
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+nav .hvr-underline-from-left:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 100%;
+  bottom: 0;
+  background: white;
+  height: 1px;
+  transition-property: right;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+nav .hvr-underline-from-left:hover:before,
+nav .hvr-underline-from-left:focus:before,
+nav .hvr-underline-from-left:active:before {
+  right: 0;
+}/*# sourceMappingURL=contact.css.map */
